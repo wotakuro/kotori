@@ -1,9 +1,13 @@
-﻿using System;
+﻿#define JSON_DEBUG
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+
 
 namespace Kotori.Json
 {
@@ -63,6 +67,25 @@ namespace Kotori.Json
         /// dictionary data for json to object.
         /// </summary>
         private Dictionary<Type, ObjectDictionaryForJson> objectMemberDictionary;
+
+
+        /// <summary>
+        ///  debug print
+        /// </summary>
+        /// <param name="str"></param>
+        private void DebugPrint(string str) {
+            System.Console.WriteLine(str);
+        }
+
+        private void DebugPrint(string str, int pidx, int idx) {
+            System.Console.Write(str+"  "+ pidx+"->"+idx);
+            System.Console.Write("   ");
+            for (int i = pidx; i < idx; ++i)
+            {
+                System.Console.Write(this.currentStr[i]);
+            }
+            System.Console.WriteLine();
+        }
 
         /// <summary>
         /// parse json data
@@ -127,6 +150,8 @@ namespace Kotori.Json
                 }
                 ++this.currentIdx;
                 ObjectDictionaryForJson.EType varType = typeDict.GetTypeFromVarName(varName);
+
+                DebugPrint(varName + "::" + varType);
                 switch (varType)
                 {
                     case ObjectDictionaryForJson.EType.NotSupported:
@@ -502,6 +527,9 @@ namespace Kotori.Json
         /// <returns></returns>
         private int GetVarValueEndIndex(int idx)
         {
+#if JSON_DEBUG
+            int prevIdx = idx;
+#endif
             idx = this.GetNextNonEmptyIdx(idx);
             if (this.currentStr[idx] == ARRAY_START)
             {
@@ -519,6 +547,9 @@ namespace Kotori.Json
             {
                 idx = this.GetNumberEndIndex(idx);
             }
+#if JSON_DEBUG
+            DebugPrint("GetVarValueEndIndex " , prevIdx , idx );
+#endif
             return idx;
         }
 
@@ -529,12 +560,16 @@ namespace Kotori.Json
         /// <returns>end index</returns>
         private int GetArrayValueEndIndex(int idx)
         {
-            if (this.currentStr[idx] != ARRAY_END)
+            if (this.currentStr[idx] != ARRAY_START)
             {
                 return idx;
             }
             ++idx;
             idx = this.GetNextNonEmptyIdx(idx);
+            if (this.currentStr[idx] == ARRAY_END)
+            {
+                return idx + 1;
+            }
             for (; idx < this.currentStr.Length; )
             {
                 idx = this.GetVarValueEndIndex(idx);
@@ -566,13 +601,32 @@ namespace Kotori.Json
             }
             ++idx;
             idx = this.GetNextNonEmptyIdx(idx);
-            // object name
-            for (; idx < this.currentStr.Length; ++ idx ){
-
-            }
             if (this.currentStr[idx] == OBJECT_END)
             {
-                ++idx;
+                return idx + 1;
+            }
+            // object 
+            for (; idx < this.currentStr.Length; ++idx)
+            {
+                // object name
+                idx = this.GetNextNonEmptyIdx(idx);
+                idx = GetObjectVarNameEndIndex(idx);
+                idx = this.GetNextNonEmptyIdx(idx);
+                // semicoron
+                if (this.currentStr[idx] == ':' ) 
+                {
+                    ++idx;
+                }
+                idx = this.GetNextNonEmptyIdx(idx);
+                // object value
+                idx = this.GetVarValueEndIndex(idx);
+                idx = this.GetNextNonEmptyIdx(idx);
+
+                if (this.currentStr[idx] == OBJECT_END)
+                {
+                    ++idx;
+                    break;
+                }
             }
             return idx;
         }

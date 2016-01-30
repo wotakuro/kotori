@@ -1,0 +1,18 @@
+﻿{
+    "listenPort": 8080,
+    "webThread": 20,
+    "bgWorkerThread": 5,
+    "database": {
+        "type": "mysql",
+        "connections": [
+            {
+                "accessName": "master",
+                "host": "localhost",
+                "user": "kotori",
+                "password": "chunchun",
+                "database": "kotori",
+                "port": 3306
+            }
+        ]
+    }
+}

@@ -16,7 +16,7 @@ namespace Kotori
         static void Main(string[] args)
         {
             // read test data
-            string testData = System.IO.File.ReadAllText("test.txt", System.Text.Encoding.UTF8);
+            string testData = System.IO.File.ReadAllText("config/config.json", System.Text.Encoding.UTF8);
             Console.WriteLine("--------------------");
             Console.WriteLine(testData);
             Console.WriteLine("--------------------");
