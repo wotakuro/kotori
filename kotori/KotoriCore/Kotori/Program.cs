@@ -16,20 +16,19 @@ namespace Kotori
         static void Main(string[] args)
         {
             // read test data
-            string testData = System.IO.File.ReadAllText("config/config.json", System.Text.Encoding.UTF8);
+            string configText = System.IO.File.ReadAllText( Config.ConfigData.FILEPATH, System.Text.Encoding.UTF8);
+            Console.WriteLine(configText);
             Console.WriteLine("--------------------");
-            Console.WriteLine(testData);
-            Console.WriteLine("--------------------");
-            // json test code
-            Application.Json.Class1 jsonTestObj = JsonParser.ParseJsonToObject<Application.Json.Class1>(testData);
+            // read json config
+            Config.ConfigData configData = JsonParser.ParseJsonToObject<Config.ConfigData>(configText);
 
             // sql test code
-            var sqlTest = new Kotori.Mysql.MysqlConnectWrapper("localhost", "kotori", "chunchun", "kotori");
+            var sqlTest = new Kotori.Mysql.MysqlConnectWrapper("test", "localhost", "kotori", "chunchun", "kotori");
             sqlTest.ReflectionTest();
             sqlTest.Dispose();
 
             // http
-            Int32 port = 80;
+            Int32 port = configData.listenPort;
             TcpListener server = new TcpListener(IPAddress.Any, port);
             server.Start();
 

@@ -9,7 +9,7 @@ namespace Kotori.Module
     class WebModuleResolver
     {
         /// <summary>
-        /// 
+        /// module dictionary
         /// </summary>
         Dictionary<string, Type> moduleDictionary;
 

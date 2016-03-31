@@ -12,6 +12,11 @@ namespace Kotori.Config
     class ConfigData
     {
         /// <summary>
+        /// config file path
+        /// </summary>
+        public const string FILEPATH = "config/config.json";
+
+        /// <summary>
         /// tcp port which listen for kotori
         /// </summary>
         public int listenPort = 8080;
@@ -48,11 +53,34 @@ namespace Kotori.Config
     /// </summary>
     class DataBaseConnectionConfig
     {
+        /// <summary>
+        /// Access name for appliction
+        /// </summary>
         public string accessName = "";
+        /// <summary>
+        /// connection pool num 
+        /// </summary>
+        public int poolNum = 1;
+
+        /// <summary>
+        /// mysql host
+        /// </summary>
         public string host = "";
+        /// <summary>
+        /// mysql user
+        /// </summary>
         public string user = "";
+        /// <summary>
+        /// mysql password
+        /// </summary>
         public string password = "";
+        /// <summary>
+        /// mysql database select
+        /// </summary>
         public string database = "";
+        /// <summary>
+        ///  mysql port number
+        /// </summary>
         public int port = 3306;
     }
 }

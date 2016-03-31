@@ -6,8 +6,11 @@ using MySql.Data.MySqlClient;
 
 namespace Kotori.Mysql
 {
-    class MysqlConnectWrapper:IDisposable
+    public class MysqlConnectWrapper:IDisposable
     {
+
+        public string Tag { private set; get; }
+
         /// <summary>
         /// connection
         /// </summary>
@@ -17,13 +20,15 @@ namespace Kotori.Mysql
         /// <summary>
         /// mysql Connection 
         /// </summary>
+        /// <param name="tag"></param>
         /// <param name="host"></param>
         /// <param name="userId"></param>
         /// <param name="passwd"></param>
         /// <param name="scheme"></param>
         /// <param name="port"></param>
-        public MysqlConnectWrapper(string host,string userId,string passwd,string scheme,int port=3306)
+        public MysqlConnectWrapper(string tag,string host,string userId,string passwd,string scheme,int port=3306)
         {
+            this.Tag = tag;
             StringBuilder sb = new StringBuilder(256);
 
             sb.Append("server=").Append(host).Append(";");
