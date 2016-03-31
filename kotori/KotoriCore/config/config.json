@@ -7,6 +7,16 @@
         "connections": [
             {
                 "accessName": "master",
+                "poolNum": 1000,
+                "host": "localhost",
+                "user": "kotori",
+                "password": "chunchun",
+                "database": "kotori",
+                "port": 3306
+            },
+            { 
+                "accessName": "slave",
+                "poolNum": 2000,
                 "host": "localhost",
                 "user": "kotori",
                 "password": "chunchun",
