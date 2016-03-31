@@ -149,6 +149,7 @@ namespace Kotori.Json
                     break;
                 }
                 ++this.currentIdx;
+                this.SkipEmptyString();
                 ObjectDictionaryForJson.EType varType = typeDict.GetTypeFromVarName(varName);
 
                 DebugPrint(varName + "::" + varType);

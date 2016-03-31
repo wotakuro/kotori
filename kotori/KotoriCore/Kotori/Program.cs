@@ -22,6 +22,8 @@ namespace Kotori
             // read json config
             Config.ConfigData configData = JsonParser.ParseJsonToObject<Config.ConfigData>(configText);
 
+            Console.WriteLine(configData.database.connections[0].host);
+
             // sql test code
             var sqlTest = new Kotori.Mysql.MysqlConnectWrapper("test", "localhost", "kotori", "chunchun", "kotori");
             sqlTest.ReflectionTest();
