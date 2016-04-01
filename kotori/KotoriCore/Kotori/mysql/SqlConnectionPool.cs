@@ -77,7 +77,16 @@ namespace Kotori.Mysql
         }
         private MysqlConnectWrapper GenerateConnection(string tag)
         {
-            return null;
+            if (!this.configDictionary.ContainsKey(tag))
+            {
+                return null;
+            }
+            var config = this.configDictionary[tag];
+            if (config == null)
+            {
+                return null;
+            }
+            return new MysqlConnectWrapper(tag, config.host, config.user, config.password, config.database, config.port);
         }
 
         private void InitializeConfig(DataBaseConnectionConfig[] settingArray)

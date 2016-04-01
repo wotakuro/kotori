@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
@@ -8,6 +7,7 @@ using System.Net.Sockets;
 using Kotori.Http;
 using Kotori.Module;
 using Kotori.Json;
+using Kotori.Mysql;
 
 namespace Kotori
 {
@@ -21,13 +21,16 @@ namespace Kotori
             Console.WriteLine("--------------------");
             // read json config
             Config.ConfigData configData = JsonParser.ParseJsonToObject<Config.ConfigData>(configText);
+            // connections
+            SqlConnectionPool.Instance.Initialize(configData.database.connections);
 
             Console.WriteLine(configData.database.connections[0].host);
 
             // sql test code
-            var sqlTest = new Kotori.Mysql.MysqlConnectWrapper("test", "localhost", "kotori", "chunchun", "kotori");
+            var sqlTest = SqlConnectionPool.Instance.AllocConnection("master");
             sqlTest.ReflectionTest();
             sqlTest.Dispose();
+            SqlConnectionPool.Instance.ReleaseConnection(sqlTest);
 
             // http
             Int32 port = configData.listenPort;
