@@ -9,7 +9,7 @@ namespace Kotori.Http
     /// <summary>
     /// Parse url parameter
     /// </summary>
-    class UrlParamParse
+    public class UrlParamParse
     {
         /*--------- constants ---------------*/
         /// <summary>

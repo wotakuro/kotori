@@ -10,7 +10,7 @@ namespace Kotori.Http
     /// <summary>
     /// Http RequestData
     /// </summary>
-    class HttpRequest
+    public class HttpRequest
     {
         /*-------------- constant vars -----------------*/
         /// <summary>

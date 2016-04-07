@@ -78,6 +78,8 @@
     <Compile Include="Kotori\Mysql\PoolingList.cs" />
     <Compile Include="Kotori\Mysql\SqlConnectionPool.cs" />
     <Compile Include="Kotori\Program.cs" />
+    <Compile Include="Kotori\Task\HttpMainTask.cs" />
+    <Compile Include="Kotori\Task\HttpMainTaskManager.cs" />
     <Compile Include="Kotori\Util\StringBufferTemporary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

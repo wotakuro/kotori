@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using Kotori.Http;
 using Kotori.Module;
 using Kotori.Json;
 using Kotori.Mysql;
+using Kotori.Task;
 
 namespace Kotori
 {
@@ -29,7 +29,6 @@ namespace Kotori
             // sql test code
             var sqlTest = SqlConnectionPool.Instance.AllocConnection("master");
             sqlTest.ReflectionTest();
-            sqlTest.Dispose();
             SqlConnectionPool.Instance.ReleaseConnection(sqlTest);
 
             // http
@@ -37,19 +36,32 @@ namespace Kotori
             TcpListener server = new TcpListener(IPAddress.Any, port);
             server.Start();
 
-            // test
+            // resolveModule
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             WebModuleResolver resolver = new WebModuleResolver(assembly.GetTypes());
+
+
+            /// http task Thread
+            HttpMainTaskManager.Instance.Initialize(configData.webThread);
 
             while (true)
             {
                 TcpClient client = server.AcceptTcpClient();
-                // Get a stream object for reading and writing
-                Exec(client, resolver);
-                // Shutdown and end connection
-                client.Close();
+                var task = HttpMainTaskManager.Instance.GetWaitTask();
+                if (task != null)
+                {
+                    task.SetExec(client, resolver);
+                }
+                else
+                {
+                    // Shutdown and end connection
+                    client.Close();
+                }
             }
         }
+
+
+
         /// <summary>
         /// exec httpSession
         /// </summary>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Kotori.Attribute
 {
     [System.AttributeUsage(System.AttributeTargets.Class)]
-    class WebModule : System.Attribute
+    public class WebModule : System.Attribute
     {
         private string moduleName;
         public WebModule(string name)

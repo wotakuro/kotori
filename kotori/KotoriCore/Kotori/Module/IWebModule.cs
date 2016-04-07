@@ -8,7 +8,7 @@ namespace Kotori.Module
     /// a interface of web module class.
     /// all module class should implements this interface.
     /// </summary>
-    interface IWebModule
+    public interface IWebModule
     {
         /// <summary>
         /// Exect module

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kotori.Module
 {
-    class WebModuleResolver
+    public class WebModuleResolver
     {
         /// <summary>
         /// module dictionary

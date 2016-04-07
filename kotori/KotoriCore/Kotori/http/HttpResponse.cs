@@ -11,7 +11,7 @@ namespace Kotori.Http
     /// <summary>
     /// http response data
     /// </summary>
-    class HttpResponse
+    public class HttpResponse
     {
         /*----------------- const ----------------*/
         /// <summary>

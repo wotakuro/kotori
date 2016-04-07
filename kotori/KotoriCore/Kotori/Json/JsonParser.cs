@@ -14,7 +14,7 @@ namespace Kotori.Json
     /// <summary>
     /// Json parser class.
     /// </summary>
-    class JsonParser
+    public class JsonParser
     {
         /// <summary>
         /// Object start simbol,
