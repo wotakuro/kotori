@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Application\Json\Class1.cs" />
     <Compile Include="Application\Json\Class2.cs" />
+    <Compile Include="Application\module\InitilizeExec.cs" />
     <Compile Include="Application\module\TestModule.cs" />
     <Compile Include="Application\module\TestModule2.cs" />
     <Compile Include="Application\sql\table\Test.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="Kotori\Http\UrlParamParse.cs" />
     <Compile Include="Kotori\Json\JsonParser.cs" />
     <Compile Include="Kotori\Json\ObjectDictionaryForJson.cs" />
+    <Compile Include="Kotori\Module\InitializeResolver.cs" />
+    <Compile Include="Kotori\Module\IProgramInitializeExec.cs" />
     <Compile Include="Kotori\Module\IWebModule.cs" />
     <Compile Include="Kotori\Module\WebModuleResolver.cs" />
     <Compile Include="Kotori\Mysql\MysqlConnectWrapper.cs" />

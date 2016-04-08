@@ -64,8 +64,11 @@ namespace Kotori
 
             // resolveModule
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            WebModuleResolver resolver = new WebModuleResolver(assembly.GetTypes());
+            Type[] assemblyTypes = assembly.GetTypes();
+            WebModuleResolver resolver = new WebModuleResolver(assemblyTypes);
 
+            // InitilizeManager
+            InitializeResolver.Initialize(assemblyTypes);
 
             /// http task Thread
             HttpMainTaskManager.Instance.Initialize(configData.webThread);
