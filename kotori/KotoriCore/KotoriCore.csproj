@@ -65,6 +65,7 @@
     <Compile Include="Application\module\TestModule.cs" />
     <Compile Include="Application\module\TestModule2.cs" />
     <Compile Include="Application\sql\table\Test.cs" />
+    <Compile Include="Kotori\Attribute\Sql\MasterData.cs" />
     <Compile Include="Kotori\Attribute\WebModule.cs" />
     <Compile Include="Kotori\Config\ConfigData.cs" />
     <Compile Include="Kotori\Http\HttpRequest.cs" />
@@ -72,6 +73,8 @@
     <Compile Include="Kotori\Http\UrlParamParse.cs" />
     <Compile Include="Kotori\Json\JsonParser.cs" />
     <Compile Include="Kotori\Json\ObjectDictionaryForJson.cs" />
+    <Compile Include="Kotori\Master\MasterDataContainerList.cs" />
+    <Compile Include="Kotori\Master\MasterDataManager.cs" />
     <Compile Include="Kotori\Module\InitializeResolver.cs" />
     <Compile Include="Kotori\Module\IProgramInitializeExec.cs" />
     <Compile Include="Kotori\Module\IWebModule.cs" />

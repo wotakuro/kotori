@@ -102,7 +102,7 @@ namespace Kotori.Module
                 Kotori.Attribute.WebModule attrWebModule = attr as Kotori.Attribute.WebModule;
                 if (attrWebModule != null)
                 {
-                    System.Console.WriteLine(" web module attribute " + attrWebModule.GetModuleName());
+//                    System.Console.WriteLine(" web module attribute " + attrWebModule.GetModuleName());
                     return attrWebModule.GetModuleName();
                 }
             }
