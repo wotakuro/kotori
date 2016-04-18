@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kotori.Attribute.Sql;
 
 namespace Application.Sql.Table
 {
+    [MasterData("Select * from test" , typeof(Kotori.Master.MasterDataContainerList<Test>))]
     class Test
     {
         public readonly int id = 0;
