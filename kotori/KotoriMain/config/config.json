@@ -14,7 +14,7 @@
                 "database": "kotori",
                 "port": 3306
             },
-            { 
+            {
                 "accessName": "slave",
                 "poolNum": 2000,
                 "host": "localhost",
@@ -24,5 +24,8 @@
                 "port": 3306
             }
         ]
-    }
+    },
+    "loadingDll": [ 
+        "dll/ApplicationSample.dll"
+    ]
 }

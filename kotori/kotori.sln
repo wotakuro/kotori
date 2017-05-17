@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KotorMain", "KotoriCore\KotorMain.csproj", "{240E63CC-9A1B-4C17-BFD9-5D6B75CB4406}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KotorMain", "KotoriMain\KotorMain.csproj", "{240E63CC-9A1B-4C17-BFD9-5D6B75CB4406}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KotoriLib", "KotoriLib\KotoriLib.csproj", "{C5A52345-8C5B-43DA-B700-62C7DB6FB6DA}"
 EndProject

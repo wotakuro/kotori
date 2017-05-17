@@ -39,23 +39,12 @@ namespace Kotori
 {
     public class KotoriCore
     {
-        public static void MainExecute(System.Reflection.Assembly assembly)
+        public static void MainExecute(Config.ConfigData configData , System.Reflection.Assembly assembly)
         {
-            // read test data
-            string configText = System.IO.File.ReadAllText(Config.ConfigData.FILEPATH, System.Text.Encoding.UTF8);
-            // read json config
-            Config.ConfigData configData = JsonParser.ParseJsonToObject<Config.ConfigData>(configText);
             // connections
             SqlConnectionPool.Instance.Initialize(configData.database.connections);
 
-            Console.WriteLine(configData.database.connections[0].host);
-
-            // sql test code
-            var sqlTest = SqlConnectionPool.Instance.AllocConnection("master");
-            //            sqlTest.ReflectionTest();
-            SqlConnectionPool.Instance.ReleaseConnection(sqlTest);
-
-            // http
+            // http server open
             Int32 port = configData.listenPort;
             TcpListener server = new TcpListener(IPAddress.Any, port);
             server.Start();
@@ -64,7 +53,7 @@ namespace Kotori
             Type[] assemblyTypes = assembly.GetTypes();
             WebModuleResolver resolver = new WebModuleResolver(assemblyTypes);
 
-            // InitilizeManager
+            // Application Initilize routine
             InitializeResolver.Initialize(assemblyTypes);
 
             /// http task Thread

@@ -1,7 +1,7 @@
 # bin/obj ÇÕèúäO
 kotori/bin/*
-kotori/KotoriCore/bin/*
-kotori/KotoriCore/obj/*
+kotori/KotoriMain/bin/*
+kotori/KotoriMain/obj/*
 kotori/KotoriLib/bin/*
 kotori/KotoriLib/obj/*
 kotori/ApplicationSample/bin/*

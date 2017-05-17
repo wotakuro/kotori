@@ -35,7 +35,7 @@ namespace Kotori.Config
     /// <summary>
     /// configure for kotori engine.
     /// </summary>
-    class ConfigData
+    public class ConfigData
     {
         /// <summary>
         /// config file path
@@ -63,7 +63,7 @@ namespace Kotori.Config
     /// <summary>
     /// database configure for kotori
     /// </summary>
-    class DataBaseConfig{
+    public class DataBaseConfig{
         /// <summary>
         /// database type( now support only mysql)
         /// </summary>
@@ -77,7 +77,7 @@ namespace Kotori.Config
     /// <summary>
     /// database connection setting
     /// </summary>
-    class DataBaseConnectionConfig
+    public class DataBaseConnectionConfig
     {
         /// <summary>
         /// Access name for appliction
