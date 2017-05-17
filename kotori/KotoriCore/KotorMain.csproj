@@ -46,10 +46,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -65,35 +65,13 @@
     <Compile Include="Application\module\TestModule.cs" />
     <Compile Include="Application\module\TestModule2.cs" />
     <Compile Include="Application\sql\table\Test.cs" />
-    <Compile Include="Kotori\Attribute\Sql\MasterData.cs" />
-    <Compile Include="Kotori\Attribute\Sql\PrimaryKey.cs" />
-    <Compile Include="Kotori\Attribute\Sql\SqlComment.cs" />
-    <Compile Include="Kotori\Attribute\Sql\StringColumn.cs" />
-    <Compile Include="Kotori\Attribute\WebModule.cs" />
-    <Compile Include="Kotori\Config\ConfigData.cs" />
-    <Compile Include="Kotori\Http\HttpRequest.cs" />
-    <Compile Include="Kotori\Http\HttpResponse.cs" />
-    <Compile Include="Kotori\Http\UrlParamParse.cs" />
-    <Compile Include="Kotori\Json\JsonParser.cs" />
-    <Compile Include="Kotori\Json\ObjectDictionaryForJson.cs" />
-    <Compile Include="Kotori\Master\MasterDataContainerList.cs" />
-    <Compile Include="Kotori\Master\MasterDataManager.cs" />
-    <Compile Include="Kotori\Module\InitializeResolver.cs" />
-    <Compile Include="Kotori\Module\IProgramInitializeExec.cs" />
-    <Compile Include="Kotori\Module\IWebModule.cs" />
-    <Compile Include="Kotori\Module\WebModuleResolver.cs" />
-    <Compile Include="Kotori\Mysql\MysqlConnectWrapper.cs" />
-    <Compile Include="Kotori\Mysql\MysqlRefection.cs" />
-    <Compile Include="Kotori\Mysql\PoolingList.cs" />
-    <Compile Include="Kotori\Mysql\SqlConnectionPool.cs" />
-    <Compile Include="Kotori\Program.cs" />
-    <Compile Include="Kotori\Task\HttpMainTask.cs" />
-    <Compile Include="Kotori\Task\HttpMainTaskManager.cs" />
-    <Compile Include="Kotori\Util\StringBufferTemporary.cs" />
+    <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -116,6 +94,12 @@
     <None Include="config\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KotoriLib\KotoriLib.csproj">
+      <Project>{c5a52345-8c5b-43da-b700-62c7db6fb6da}</Project>
+      <Name>KotoriLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

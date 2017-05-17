@@ -88,7 +88,7 @@ namespace Kotori.Mysql
                 reader.Close();
             }
         }
-
+        /*
         public void ReflectionTest() {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM kotori.test where id< @i0", this.connection);
             cmd.Parameters.AddWithValue("@i0", 3);
@@ -108,7 +108,7 @@ namespace Kotori.Mysql
                     Console.WriteLine("  val is null ");
                 }
             }
-        }
+        }*/
 
         #endregion
 

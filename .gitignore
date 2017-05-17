@@ -2,4 +2,7 @@
 kotori/bin/*
 kotori/KotoriCore/bin/*
 kotori/KotoriCore/obj/*
-
+kotori/KotoriLib/bin/*
+kotori/KotoriLib/obj/*
+kotori/ApplicationSample/bin/*
+kotori/ApplicationSample/obj/*

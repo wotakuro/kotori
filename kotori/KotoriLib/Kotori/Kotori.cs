@@ -37,14 +37,12 @@ using Kotori.Task;
 
 namespace Kotori
 {
-    class Program
+    public class KotoriCore
     {
-        static void Main(string[] args)
+        public static void MainExecute(System.Reflection.Assembly assembly)
         {
             // read test data
-            string configText = System.IO.File.ReadAllText( Config.ConfigData.FILEPATH, System.Text.Encoding.UTF8);
-            Console.WriteLine(configText);
-            Console.WriteLine("--------------------");
+            string configText = System.IO.File.ReadAllText(Config.ConfigData.FILEPATH, System.Text.Encoding.UTF8);
             // read json config
             Config.ConfigData configData = JsonParser.ParseJsonToObject<Config.ConfigData>(configText);
             // connections
@@ -54,7 +52,7 @@ namespace Kotori
 
             // sql test code
             var sqlTest = SqlConnectionPool.Instance.AllocConnection("master");
-            sqlTest.ReflectionTest();
+            //            sqlTest.ReflectionTest();
             SqlConnectionPool.Instance.ReleaseConnection(sqlTest);
 
             // http
@@ -63,7 +61,6 @@ namespace Kotori
             server.Start();
 
             // resolveModule
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             Type[] assemblyTypes = assembly.GetTypes();
             WebModuleResolver resolver = new WebModuleResolver(assemblyTypes);
 
@@ -76,6 +73,7 @@ namespace Kotori
             while (true)
             {
                 TcpClient client = server.AcceptTcpClient();
+
                 var task = HttpMainTaskManager.Instance.GetWaitTask();
                 if (task != null)
                 {
@@ -86,7 +84,9 @@ namespace Kotori
                     // Shutdown and end connection
                     client.Close();
                 }
+
             }
+
         }
 
 
